@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: flask_backend_service
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    env_file:
+      - ./.env # Load environment variables from .env
+    networks:
+      - app-network
+
+  # Stripe CLI Service
+  stripe-cli:
+    image: stripe/stripe-cli:latest
+    container_name: stripe_cli_service
+    command: "listen --forward-to backend:8000/payment/webhook --api-key ${STRIPE_SECRET_KEY}"
+    env_file:
+      - ./.env # Load .env to get STRIPE_SECRET_KEY
+    depends_on:
+      - backend # Wait for the backend service to start
+    networks:
+      - app-network
+
+# The network for services to communicate
+networks:
+  app-network:
+    driver: bridge
+    

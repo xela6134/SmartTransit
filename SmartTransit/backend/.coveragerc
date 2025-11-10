@@ -1,0 +1,23 @@
+[run]
+source = .
+
+omit =
+    */tests/*
+    */__init__.py
+    /usr/*
+    */site-packages/*
+    */dist-packages/*
+    app.py
+    payment.py
+
+[report]
+show_missing = true
+
+omit =
+    */tests/*
+    */__init__.py
+    /usr/*
+    */site-packages/*
+    */dist-packages/*
+    app.py
+    payment.py

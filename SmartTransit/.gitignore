@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.env*
+database/test_queries.txt
+SmartTransit/frontend/.env.local
+*.env*
+database/test_queries.txt
+backend/.env.test
+backend/.env
+backend/__pycache__
+backend/htmlcov
+backend/.coverage
